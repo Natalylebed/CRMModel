@@ -20,7 +20,8 @@ namespace CRMVinForm
         public Catalog(DbSet<T> set/*, CRMContext db*/)
         {
             InitializeComponent();
-            this.set = set;
+            dataGridView1.DataSource = set.Local.ToBindingList();
+            //this.set = set;
             //this.db = db;
         }
 
