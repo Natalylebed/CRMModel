@@ -12,7 +12,7 @@ namespace CRMBL.Molel
 
         public int Id { get; set; }
 
-        public virtual ICollection<Check> ChecksInCustomer { get; set; }
+        public virtual ICollection<Check> Checks { get; set; }
 
         public override string ToString()
         {

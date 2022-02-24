@@ -11,10 +11,10 @@ namespace CRMBL.Molel
         public int Id { get; set; }
         public DateTime Date { get; set; }
 
-        public int CustomerIdInChek { get; set; }
+        public int CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
 
-        public int SellerIdInChek { get; set; }
+        public int SellerId { get; set; }
 
         public virtual Seller Seller { get; set; }
 

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMBL", "CRMBL\CRMBL.csproj", "{07FF3E9B-37A1-4FB4-BA39-E7A5A91B7018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRMBL", "CRMBL\CRMBL.csproj", "{07FF3E9B-37A1-4FB4-BA39-E7A5A91B7018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMVinForm", "CRMVinForm\CRMVinForm.csproj", "{387B43EC-AEFC-468D-A2ED-7AF6EE677645}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{07FF3E9B-37A1-4FB4-BA39-E7A5A91B7018}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07FF3E9B-37A1-4FB4-BA39-E7A5A91B7018}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07FF3E9B-37A1-4FB4-BA39-E7A5A91B7018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{387B43EC-AEFC-468D-A2ED-7AF6EE677645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{387B43EC-AEFC-468D-A2ED-7AF6EE677645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{387B43EC-AEFC-468D-A2ED-7AF6EE677645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{387B43EC-AEFC-468D-A2ED-7AF6EE677645}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

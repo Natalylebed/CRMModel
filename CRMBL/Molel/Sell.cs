@@ -10,8 +10,8 @@ namespace CRMBL.Molel
     {
         public int Id { get; set; }
         public virtual Product Product { get; set; }
-        public int ProductIdInSell { get; set; }
-        public int CheckIdInSell { get; set; }
+        public int ProductId { get; set; }
+        public int CheckId { get; set; }
 
         public virtual Check Chek { get; set; }
 
