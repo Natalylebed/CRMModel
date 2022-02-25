@@ -92,7 +92,7 @@ namespace CRMVinForm
             // добавитьToolStripMenuItem1
             // 
             this.добавитьToolStripMenuItem1.Name = "добавитьToolStripMenuItem1";
-            this.добавитьToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.добавитьToolStripMenuItem1.Size = new System.Drawing.Size(139, 24);
             this.добавитьToolStripMenuItem1.Text = "Добавить";
             this.добавитьToolStripMenuItem1.Click += new System.EventHandler(this.AddSellerToolStripMenuItem_Click);
             // 
@@ -109,7 +109,7 @@ namespace CRMVinForm
             // AddProductToolStripMenuItem
             // 
             this.AddProductToolStripMenuItem.Name = "AddProductToolStripMenuItem";
-            this.AddProductToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.AddProductToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
             this.AddProductToolStripMenuItem.Text = "Добавить";
             this.AddProductToolStripMenuItem.Click += new System.EventHandler(this.AddCustomerToolStripMenuItem_Click);
             // 
@@ -125,8 +125,9 @@ namespace CRMVinForm
             // добавитьToolStripMenuItem2
             // 
             this.добавитьToolStripMenuItem2.Name = "добавитьToolStripMenuItem2";
-            this.добавитьToolStripMenuItem2.Size = new System.Drawing.Size(145, 24);
+            this.добавитьToolStripMenuItem2.Size = new System.Drawing.Size(180, 24);
             this.добавитьToolStripMenuItem2.Text = "Добавить";
+            this.добавитьToolStripMenuItem2.Click += new System.EventHandler(this.AddProductToolStripMene_Click);
             // 
             // Main
             // 

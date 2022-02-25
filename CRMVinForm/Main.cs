@@ -58,5 +58,15 @@ namespace CRMVinForm
                 db.SaveChanges();
             }
         }
+
+        private void AddProductToolStripMene_Click(object sender, EventArgs e)
+        {
+            var form = new ProductForm();
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                db.Producs.Add(form.ProductAdd);
+                db.SaveChanges();
+            }
+        }
     }
 }
