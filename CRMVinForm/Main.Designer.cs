@@ -34,7 +34,11 @@ namespace CRMVinForm
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.складToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.продовацToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.покупатульToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.товарToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +48,7 @@ namespace CRMVinForm
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(306, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(306, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -54,36 +58,75 @@ namespace CRMVinForm
             this.toolStripTextBox1,
             this.складToolStripMenuItem,
             this.продовацToolStripMenuItem,
-            this.покупатульToolStripMenuItem});
+            this.покупатульToolStripMenuItem,
+            this.товарToolStripMenuItem});
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(76, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(89, 24);
             this.toolStripMenuItem1.Text = "Сущности";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripTextBox1
             // 
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox1.Text = "товар";
-            this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
+            this.toolStripTextBox1.Text = "ООО Магазин";
             // 
             // складToolStripMenuItem
             // 
+            this.складToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.складToolStripMenuItem.Name = "складToolStripMenuItem";
-            this.складToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.складToolStripMenuItem.Text = "склад";
+            this.складToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.складToolStripMenuItem.Text = "Чек";
+            this.складToolStripMenuItem.Click += new System.EventHandler(this.CkeckToolStripMenuItem_Click);
             // 
             // продовацToolStripMenuItem
             // 
+            this.продовацToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьToolStripMenuItem1});
+            this.продовацToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.продовацToolStripMenuItem.Name = "продовацToolStripMenuItem";
-            this.продовацToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.продовацToolStripMenuItem.Text = "продавец";
+            this.продовацToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.продовацToolStripMenuItem.Text = "Продавец";
+            this.продовацToolStripMenuItem.Click += new System.EventHandler(this.SellerStripMenuItem1_Click);
+            // 
+            // добавитьToolStripMenuItem1
+            // 
+            this.добавитьToolStripMenuItem1.Name = "добавитьToolStripMenuItem1";
+            this.добавитьToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.добавитьToolStripMenuItem1.Text = "Добавить";
+            this.добавитьToolStripMenuItem1.Click += new System.EventHandler(this.AddSellerToolStripMenuItem_Click);
             // 
             // покупатульToolStripMenuItem
             // 
+            this.покупатульToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddProductToolStripMenuItem});
+            this.покупатульToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.покупатульToolStripMenuItem.Name = "покупатульToolStripMenuItem";
-            this.покупатульToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.покупатульToolStripMenuItem.Text = "покупатель";
+            this.покупатульToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.покупатульToolStripMenuItem.Text = "Покупатель";
+            this.покупатульToolStripMenuItem.Click += new System.EventHandler(this.CustomerToolStripMenuItem_Click);
+            // 
+            // AddProductToolStripMenuItem
+            // 
+            this.AddProductToolStripMenuItem.Name = "AddProductToolStripMenuItem";
+            this.AddProductToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.AddProductToolStripMenuItem.Text = "Добавить";
+            this.AddProductToolStripMenuItem.Click += new System.EventHandler(this.AddCustomerToolStripMenuItem_Click);
+            // 
+            // товарToolStripMenuItem
+            // 
+            this.товарToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьToolStripMenuItem2});
+            this.товарToolStripMenuItem.Name = "товарToolStripMenuItem";
+            this.товарToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.товарToolStripMenuItem.Text = "Товар";
+            this.товарToolStripMenuItem.Click += new System.EventHandler(this.ProductToolStripMenuItem_Click);
+            // 
+            // добавитьToolStripMenuItem2
+            // 
+            this.добавитьToolStripMenuItem2.Name = "добавитьToolStripMenuItem2";
+            this.добавитьToolStripMenuItem2.Size = new System.Drawing.Size(145, 24);
+            this.добавитьToolStripMenuItem2.Text = "Добавить";
             // 
             // Main
             // 
@@ -109,6 +152,10 @@ namespace CRMVinForm
         private System.Windows.Forms.ToolStripMenuItem складToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem продовацToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem покупатульToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem товарToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddProductToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem2;
     }
 }
 
