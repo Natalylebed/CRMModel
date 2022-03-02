@@ -12,6 +12,13 @@ namespace CRMVinForm
         {
             InitializeComponent();
         }
+        public ProductForm(Product product) : this()
+        {
+            ProductAdd=product;
+            textBox1.Text = ProductAdd.NameProduct;
+            numericUpDown1.Value = ProductAdd.Price;
+            numericUpDown2.Value = ProductAdd.Count;
+        }
 
         private void ProductForm_Load(object sender, EventArgs e)
         {
@@ -20,12 +27,12 @@ namespace CRMVinForm
 
         private void AddProduct_Click(object sender, EventArgs e)
         {
-            ProductAdd = new Product()
-            {
-                NameProduct = textBox1.Text,
-                Price =numericUpDown1.Value,
-                Count=(int)numericUpDown2.Value
-            };
+            var p = ProductAdd ?? new Product();
+
+            p.NameProduct = textBox1.Text;
+            p.Price = numericUpDown1.Value;
+            p.Count = (int)numericUpDown2.Value;
+           
             Close();
 
         }

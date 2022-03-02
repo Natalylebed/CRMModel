@@ -90,15 +90,29 @@ namespace CRMVinForm
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.DecimalPlaces = 2;
             this.numericUpDown1.Location = new System.Drawing.Point(130, 55);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(323, 23);
             this.numericUpDown1.TabIndex = 7;
             // 
             // numericUpDown2
             // 
+            this.numericUpDown2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown2.Location = new System.Drawing.Point(130, 93);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1215752192,
+            23,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(323, 23);
             this.numericUpDown2.TabIndex = 8;

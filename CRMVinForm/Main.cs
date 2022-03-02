@@ -16,23 +16,23 @@ namespace CRMVinForm
        
         private void SellerStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var catalogSeller = new Catalog<Seller>(db.Sellers);
+            var catalogSeller = new Catalog<Seller>(db.Sellers,db);
             catalogSeller.Show();
         }
         private void CustomerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogCustomer = new Catalog<Customer>(db.Customers);
+            var catalogCustomer = new Catalog<Customer>(db.Customers, db);
             catalogCustomer.Show();
         }       
         private void CkeckToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogCheck = new Catalog<Check>(db.Checks);
+            var catalogCheck = new Catalog<Check>(db.Checks, db);
             catalogCheck.Show();
         }
 
         private void ProductToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var catalogProduct = new Catalog<Product>(db.Producs);
+            var catalogProduct = new Catalog<Product>(db.Producs, db);
             catalogProduct.Show();
 
         }
