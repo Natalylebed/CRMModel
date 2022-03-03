@@ -61,29 +61,47 @@ namespace CRMVinForm
                 if (product != null)
                 {
                     var form = new ProductForm(product);
-                    if(form.ShowDialog() == DialogResult.OK)
+                    if (form.ShowDialog() == DialogResult.OK)
                     {
-                       
+                        product = form.ProductAdd;
                         db.SaveChanges();
-                       
+                        dataGridView1.Update();
                     }
-                    product = form.ProductAdd;
                 }
-               
-
-
             }
-
-
             else if (typeof(T) == typeof(Customer))
             {
+                var customer = set.Find(id) as Customer;
+                if (customer != null)
+                {
+                    var form = new CustomerForm(customer);
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        customer = form.customerAdd;
+                        db.SaveChanges();
+                        dataGridView1.Update();
+                    }
+                }
 
             }
             else if (typeof(T) == typeof(Seller))
             {
+                var seller = set.Find(id) as Seller;
+                if (seller != null)
+                {
+                    var form = new SellerForm(seller);
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        seller = form.AddSeller;
+                        db.SaveChanges();
+                        dataGridView1.Update();
+                    }
+                }
 
             }
         }
+
+        
 
         private void DeleteCatalog_Click(object sender, System.EventArgs e)
         {

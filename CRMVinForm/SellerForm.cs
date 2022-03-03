@@ -11,14 +11,18 @@ namespace CRMVinForm
         {
             InitializeComponent();
         }
+        public SellerForm(Seller seller):this()
+        {
+            AddSeller = seller;
+            AddSeller.NameSeller = textBox1.Text;
+        }
 
         private void SellerAdd_Click(object sender, System.EventArgs e)
         {
-            AddSeller = new Seller()
-            {
-                NameSeller = textBox1.Text
+            var p = AddSeller ?? new Seller();
 
-            };
+            p.NameSeller = textBox1.Text;
+
             Close();
         }
     }

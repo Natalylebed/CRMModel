@@ -8,9 +8,8 @@ namespace CRMBL.Molel
 {
     public class Customer
     {
-        public string NameCustomer { get; set; }
-
         public int Id { get; set; }
+        public string NameCustomer { get; set; }       
 
         public virtual ICollection<Check> Checks { get; set; }
 

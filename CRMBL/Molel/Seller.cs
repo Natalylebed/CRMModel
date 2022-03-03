@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace CRMBL.Molel
 {
     public class Seller
-    {
-        public string NameSeller { get; set; }
+    { 
+    public int Id { get; set; }
 
-        public int Id { get; set; }
+    public string NameSeller { get; set; }        
 
         public virtual ICollection<Check> ChecksI { get; set; }
 

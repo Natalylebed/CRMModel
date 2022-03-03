@@ -18,15 +18,16 @@ namespace CRMVinForm
         {
             InitializeComponent();
         }
-
+        public CustomerForm(Customer customer):this()
+        {
+            customerAdd = customer;
+            customerAdd.NameCustomer = textBox1.Text;
+        }
        
         private void ButtonAddCustomer_Clik(object sender, EventArgs e)
         {
-            customerAdd = new Customer()
-            {
-                NameCustomer = textBox1.Text
-            };
-
+            var p = customerAdd ?? new Customer();
+            p.NameCustomer = textBox1.Text;            
             Close();
 
         }
