@@ -20,5 +20,20 @@ namespace CRMBL.Molel
         {
             return NameProduct;
         }
+        public override int GetHashCode()
+        {
+            return Id;
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj is Product product)
+            {
+                return Id.Equals(product.Id);
+            }
+            return false;
+        }
+       
+
+
     }
 }
