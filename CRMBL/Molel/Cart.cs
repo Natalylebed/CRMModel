@@ -45,6 +45,7 @@ namespace CRMBL.Molel
         public List<Product> GetAll(Cart cart)
         {
             var result = new List<Product>();
+
             foreach(var product in cart.catalogProducts.Keys)
             {
                 
