@@ -22,7 +22,9 @@ namespace CRMBL.Molel
         }
         public override int GetHashCode()
         {
-            return Id;
+            var unic = new Random();
+            var Hachcod = Id + unic.Next(1,10000);
+            return Hachcod;
         }
         public override bool Equals(object obj)
         {

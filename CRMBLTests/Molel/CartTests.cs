@@ -60,11 +60,20 @@ namespace CRMBL.Molel.Tests
             cart.AddProductInCart(product1);
             cart.AddProductInCart(product2);
 
-            var expected = cart.GetAll(cart);
-            var actual = cart.GetEnumerator();
+            var actual = cart.GetAll(cart);
+            var expected = new List<Product>();
+            for (int i = 0; i < product2.Count; i++)
+            {
+                expected.Add(product2);
+             }
+            for (int i = 0; i < product1.Count; i++)
+            {
+                expected.Add(product1);
+            }
+          
            
 
-            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(actual.Count, expected.Count);
         }
 
 

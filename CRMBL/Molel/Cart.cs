@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CRMBL.Molel
 {
-    public class Cart : IEnumerable
+    public class Cart
     {
         public int ID { get; set; }
 
@@ -31,23 +31,27 @@ namespace CRMBL.Molel
                 catalogProducts.Add(product,product.Count);
             }
         }
-        public IEnumerator GetEnumerator()
-        {
-            foreach (var product in catalogProducts.Keys)
-            {
-                for (int i=0; i < product.Count; i++)
-                {
-                    yield return product;
-                }
-            }                  
+        //public IEnumerator GetEnumerator()
+        //{
+        //    foreach (var product in catalogProducts.Keys)
+        //    {
+        //        for (int i=0; i < catalogProducts[product]; i++)
+        //        {
+        //            yield return product;
+        //        }
+        //    }                  
            
-        }
+        //}
         public List<Product> GetAll(Cart cart)
         {
             var result = new List<Product>();
             foreach(var product in cart.catalogProducts.Keys)
             {
-                result.Add(product);
+                
+                for (int i = 0; i < product.Count; i++)
+                {
+                    result.Add(product);
+                }
             }
             return result;
 
