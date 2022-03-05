@@ -24,7 +24,7 @@ namespace CRMBL.Molel
         {
             if (catalogProducts.TryGetValue(product, out int count))
             {
-                catalogProducts[product] = ++count;  //count+1
+                catalogProducts[product] = product.Count+count;  //count+1
             }
             else
             {
