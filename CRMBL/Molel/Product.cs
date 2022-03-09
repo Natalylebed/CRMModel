@@ -22,8 +22,7 @@ namespace CRMBL.Molel
         }
         public override int GetHashCode()
         {
-            var unic = new Random();
-            var Hachcod = Id + unic.Next(1,10000);
+            var Hachcod = Id;
             return Hachcod;
         }
         public override bool Equals(object obj)
@@ -34,7 +33,7 @@ namespace CRMBL.Molel
             }
             return false;
         }
-       
+
 
 
     }

@@ -46,8 +46,9 @@ namespace CRMBL.Molel
                         Seller = Seller,
                         SellerId = Seller.Id,
                         Customer = outCustomer.CustomerInCart,
-                        CustomerId = outCustomer.CustomerInCart.Id                                           
-                    };
+                        CustomerId = outCustomer.CustomerInCart.Id,
+                        Sells= new List<Sell>()
+                };
                     if (!IsModel)
                     {                       
                         db.Checks.Add(check);
@@ -70,7 +71,7 @@ namespace CRMBL.Molel
                                 Product = product,
                                 ProductId = product.Id
                             };
-                        
+                           
                         check.Sells.Add(sell);
 
                         if (!IsModel)

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CRMBL.Molel
 {
-    public class Cart
+    public class Cart: IEnumerable
     {
         public int ID { get; set; }
 
@@ -24,35 +24,41 @@ namespace CRMBL.Molel
         {
             if (catalogProducts.TryGetValue(product, out int count))
             {
-                catalogProducts[product] = product.Count+count;  //count+1
+              
+                catalogProducts[product] =product.Count+count;  //count+1
             }
             else
             {
                 catalogProducts.Add(product,product.Count);
             }
         }
-        //public IEnumerator GetEnumerator()
-        //{
-        //    foreach (var product in catalogProducts.Keys)
-        //    {
-        //        for (int i=0; i < catalogProducts[product]; i++)
-        //        {
-        //            yield return product;
-        //        }
-        //    }                  
-           
-        //}
+        public IEnumerator GetEnumerator()
+        {
+            foreach (var product in catalogProducts.Keys)
+            {
+                for (int i = 0; i < catalogProducts[product]; i++)
+                {
+                    yield return product;
+                }
+            }
+
+        }
         public List<Product> GetAll(Cart cart)
         {
             var result = new List<Product>();
 
-            foreach(var product in cart.catalogProducts.Keys)
+            foreach(Product product in cart)
             {
-                
-                for (int i = 0; i < product.Count; i++)
+                var product1 = new Product()
                 {
-                    result.Add(product);
-                }
+                    NameProduct = product.NameProduct,
+                    Count = 1,
+                    Id = product.Id,
+                    Price = product.Price,
+                    Sells = product.Sells
+                };
+                    result.Add(product1);
+                              
             }
             return result;
 
