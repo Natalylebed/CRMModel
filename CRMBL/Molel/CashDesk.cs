@@ -21,7 +21,7 @@ namespace CRMBL.Molel
             Queues = new Queue<Cart>();
             IsModel = true;
         }
-        public void AddQueuesCustomer(Cart cart, CashDesk cashDesk)
+        public void AddQueuesCustomer(Cart cart)
         {
             if (Queues.Count >= MaxLengthQueue)
             {
@@ -29,7 +29,7 @@ namespace CRMBL.Molel
             }
         else
             {
-                cashDesk.Queues.Enqueue(cart);
+                Queues.Enqueue(cart);
             }
         }
         public decimal DellQueuesCustomer()
