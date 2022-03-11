@@ -5,41 +5,47 @@ using System.Linq;
 
 namespace CRMBL.Molel
 {
-    class ModelShop
+    public class ModelShop
     {
+
         Generator Generator = new Generator();
         public List<Cart> CartInModel { get; set; }
         public List<CashDesk> CashDesksInModel { get; set; }
-        public List<Check> ChecksInModel { get; set; }
-        public List <Sell> SellsInModel { get; set; }
+        //public List<Check> ChechsInModel { get; set; }
+        
 
         //Очередь из продовцов
         public Queue<Seller> SellersQueue { get; set; }
-       
+
         public int EmtySeller { get; set; }
 
-        public ModelShop()
+        public ModelShop(int countseller, int countproduct)
         {
-            SellersQueue = new Queue<Seller>();
-            var freeSellers = Generator.GetNewSeller(10);
-            AddSelerInQueue(freeSellers, SellersQueue);                     
-             Generator.GetNewProduct(10000);          
+            CartInModel = new List<Cart>();
+            CashDesksInModel = new List<CashDesk>();
+            //ChechsInModel = new List<Check>();
+           
 
+
+            SellersQueue = new Queue<Seller>();
+            var freeSellers = Generator.GetNewSeller(countseller);
+            AddSelerInQueue(freeSellers, SellersQueue);
+            Generator.GetNewProduct(countproduct);
         }
 
-        public void Start()
+        public void Start(int countcustomer, int minproductincart, int maxproductincart, int countcart)
         {
-            var customer = Generator.GetNewCustomers(34);
+            var customer = Generator.GetNewCustomers(countcustomer);
             GetCarts(customer, CartInModel);
-            AddProduct(Generator.ProductsinGenerator, CartInModel, 1, 20);
-            GetCashDesks(CashDesksInModel, SellersQueue, 5);
+            AddProduct(Generator.ProductsinGenerator, CartInModel, minproductincart, maxproductincart);
+            GetCashDesks(CashDesksInModel, SellersQueue, countcart);
             AddCartInCashDesks(CashDesksInModel, CartInModel);
 
         }
         Random random = new Random();
         public Queue<Seller> AddSelerInQueue(List<Seller> sellers, Queue<Seller> SellersQueue)
         {
-            foreach(var seller in sellers)
+            foreach (var seller in sellers)
             {
                 SellersQueue.Enqueue(seller);
             }
@@ -59,14 +65,15 @@ namespace CRMBL.Molel
             };
             return CartInModel;
         }
-        public List<Cart> AddProduct(List<Product> product, List<Cart> CartInModel,int min, int max)
-        {            
-            var countProduct = random.Next(min, max);
+        public List<Cart> AddProduct(List<Product> product, List<Cart> CartInModel, int min, int max)
+        {           
             foreach (var cart in CartInModel)
             {
+                var countProduct = random.Next(min, max);
+
                 for (int i = 0; i < countProduct; i++)
                 {
-                    cart.AddProductInCart(product[random.Next(product.Count-1)]);
+                    cart.AddProductInCart(product[random.Next(product.Count - 1)]);
                 }
             }
             return CartInModel;
@@ -116,20 +123,16 @@ namespace CRMBL.Molel
             //var cash = CashDesksInModel.Min(c => c.Queues.Count);//ТОDO
             foreach (var cashDesk in CashDesksInModel)
             {
-               
+
                 for (int i = 0; i < cashDesk.MaxLengthQueue; i++)
                 {
-                    var cart = CartInModel[i];
+                    while(CartInModel.Count > 0)
+                    {
+                    var cart = CartInModel[0];
                     cashDesk.AddQueuesCustomer(cart);
-                    //if (CartInModel.Count >= 1)
-                    //{
-                    //    CartInModel.RemoveAt(0);
-                    //}
-                    //else if (CartInModel.Count == 0)
-                    //{
-                    //    break;
-
-                    //}
+                     CartInModel.RemoveAt(0);
+                    };
+                    
                 }
 
             }

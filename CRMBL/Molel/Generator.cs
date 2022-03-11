@@ -11,6 +11,12 @@ namespace CRMBL.Molel
         public List<Customer> CustomerInGenerator { get; set; }        
 
         Random random = new Random();
+        public Generator()
+        {
+            ProductsinGenerator = new List<Product>();
+            SellerInGenerator = new List<Seller>();
+            CustomerInGenerator = new List<Customer>();
+        }
         public List<Customer> GetNewCustomers(int CustomerCount)
         {
             for (int c = 0; c < CustomerCount; c++)
@@ -33,7 +39,7 @@ namespace CRMBL.Molel
                     NameProduct = RandomString(),
                     Price = random.Next(5, 10000),
                     Id = p,
-                    Count = random.Next(1, 100)
+                    Count = random.Next(1, 4)
                 };
                 ProductsinGenerator.Add(product);
             }
