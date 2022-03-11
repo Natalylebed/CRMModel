@@ -10,6 +10,7 @@ namespace CRMBL.Molel
         public Seller Seller { get; set; }
         public int NumberCashDesk { get; set; }
         public Queue<Cart> Queues { get; set; }
+        public int Count => Queues.Count;
         public bool IsModel { get; set; }
         public int CountOurCustomerQueue { get; set; }
         public int MaxLengthQueue { get; set; }
