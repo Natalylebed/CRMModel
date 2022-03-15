@@ -106,7 +106,7 @@ namespace CRMBL.Molel
             }
             else
             {
-                throw new Exception("Касса пустая");
+                return 0;
             }
 
         }
