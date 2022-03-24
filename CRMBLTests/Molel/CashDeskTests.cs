@@ -51,7 +51,7 @@ namespace CRMBL.Molel.Tests
             cart2.AddProductInCart(product1);
             cart2.AddProductInCart(product2);
 
-            var cashdeck = new CashDesk(sellerIra, 1);
+            var cashdeck = new CashDesk(sellerIra, 1,5,3);
             Assert.AreEqual(cashdeck.Seller,sellerIra);
 
             cashdeck.MaxLengthQueue = 10;

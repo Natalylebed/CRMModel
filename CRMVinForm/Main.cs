@@ -68,5 +68,20 @@ namespace CRMVinForm
                 db.SaveChanges();
             }
         }
+
+        private void modelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void StartToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            var model = new Model();
+            model.Show();
+
+        }
     }
-}
+
+       
+    }

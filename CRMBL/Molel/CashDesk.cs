@@ -15,12 +15,16 @@ namespace CRMBL.Molel
         public int CountOurCustomerQueue { get; set; }
         public int MaxLengthQueue { get; set; }
         public int ExitWhithoutSellCustomer { get; set; }
-        public CashDesk(Seller seller, int number)        
+
+        public event EventHandler<Check> CheckClose;
+        public CashDesk(Seller seller, int number,int maxlenghtQueues, int exitWhithoutSellCustomer)        
         {
             NumberCashDesk = number;
             Seller = seller;
-            Queues = new Queue<Cart>();
             IsModel = true;
+            Queues = new Queue<Cart>();
+            MaxLengthQueue = maxlenghtQueues;
+            ExitWhithoutSellCustomer = exitWhithoutSellCustomer;
         }
         public void AddQueuesCustomer(Cart cart)
         {
@@ -35,8 +39,12 @@ namespace CRMBL.Molel
         }
         public decimal DellQueuesCustomer()
         {
-            if (Queues.Count >= 1)
+            if(Queues.Count==0)
             {
+                return 0;
+            }
+
+                decimal sumPriseSellProguct = 0;
                 var outCustomer=Queues.Dequeue();
                 {
                     List<Product> allproduct = outCustomer.GetAll(outCustomer);
@@ -60,7 +68,7 @@ namespace CRMBL.Molel
                         check.Id = Seller.Id + 1000;
                     }
 
-                    decimal sumPriseSellProguct = 0;
+                    
                     foreach (var product in allproduct)
                     {
                        
@@ -91,23 +99,18 @@ namespace CRMBL.Molel
                             throw new ArgumentException($"Товара{product.NameProduct} нет на складе");
                         }
                     }
-                    return sumPriseSellProguct;
+                    check.SumChek= sumPriseSellProguct;
+                   
 
                     if (!IsModel)
                     {
                         db.SaveChanges();
                     }
-                    else
-                    {
-                        CountOurCustomerQueue++;
-                    }
-                }            
-                
-            }
-            else
-            {
-                return 0;
-            }
+                    CheckClose?.Invoke(this,check);
+                }
+                return sumPriseSellProguct;
+            
+            
 
         }
     }

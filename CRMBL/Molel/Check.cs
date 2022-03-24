@@ -25,6 +25,7 @@ namespace CRMBL.Molel
             return $"{Id} от {Date.ToString("dd.MM.yy hh:mm:ss")}";
         }
 
+        public decimal SumChek { get; set; }
 
     }
 }

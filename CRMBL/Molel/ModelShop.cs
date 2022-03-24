@@ -19,7 +19,8 @@ namespace CRMBL.Molel
 
         //Очередь из продовцов
         public Queue<Seller> SellersQueue { get; set; }
-
+        public int CustomerSpeed { get; set; } = 100;
+        public int CashDeskSpeed { get; set; } = 100;
         public int EmtySeller { get; set; }
         List<Task> task = new List<Task>();
 
@@ -38,37 +39,45 @@ namespace CRMBL.Molel
             GetCashDesks(CashDesksInModel, SellersQueue, countcart, ExitWhithoutSellCustomer, MaxLengthQueue);
         }
 
-        public async void Start(int countcustomer, int minproductincart, int maxproductincart, int sleep)
+        public void Start(int countcustomer, int minproductincart, int maxproductincart, int sleep)
         {
             isWoking = true;
-            task.Add( new Task(() => CreateCart(countcustomer, sleep,  minproductincart,  maxproductincart)));
-            task.Add(new  Task(() => AddCartInCashDesks()));
-            task.AddRange( CashDesksInModel.Select(c => new Task(() => CashDeskWork(c, 1000))));          
-            foreach(var onetask in task)
+            Task.Run(() =>  CreateCart(countcustomer, sleep,  minproductincart,  maxproductincart));
+            //Task.Run(() => AddCartInCashDesks(CashDesksInModel,CartInModel));
+            task.AddRange( CashDesksInModel.Select(c => new Task(() => CashDeskWork(c, CashDeskSpeed))));
+            //foreach(var onetask in task)
+            //{
+            //    onetask.Start();
+            //}
+            foreach (var onetask in task)
             {
+                //while (task.Count > 0)
+                //{
                 onetask.Start();
+                //onetask.GetAwaiter().GetResult();
+
+                //}
             }
+                
         }
-        private  void CreateCart(int countcustomer, int sleep, int minproductincart, int maxproductincart)
+        private List<Cart> CreateCart(int countcustomer, int sleep, int minproductincart, int maxproductincart)
         {            
             var customer = Generator.GetNewCustomers(countcustomer);
             var cart= GetCarts(Generator.ProductsinGenerator, customer, minproductincart, maxproductincart);
-            // AddCartInCashDesks(CashDesksInModel, cartwhisproduct);
-            Thread.Sleep(sleep);           
-
-        }
-        private void AddCartInCashDesks()
-        {
             AddCartInCashDesks(CashDesksInModel, CartInModel);
+            // AddCartInCashDesks(CashDesksInModel, cartwhisproduct);
+
+            return cart;
         }
+        
         private void CashDeskWork(CashDesk cashDesk, int sleep)
         {
             while (isWoking)
             {
-                if(cashDesk.Count>0)
+                if(cashDesk.Queues.Count>0)
                 {
                     cashDesk.DellQueuesCustomer();
-                    Thread.Sleep(sleep);
+                    Thread.Sleep(CashDeskSpeed);
                 }
 
             }
@@ -95,16 +104,8 @@ namespace CRMBL.Molel
                 for (int i = 0; i < CountCashDesk; i++)
                 {
                     var seller = SellersQueue.Dequeue();
-                    var cashdesk = new CashDesk(seller, i)
-                    {
-                        IsModel = true,
-                        CountOurCustomerQueue = 0,
-                        ExitWhithoutSellCustomer = ExitWhithoutSellCustomer,
-                        MaxLengthQueue = MaxLengthQueue,
-                        NumberCashDesk = i,
-                        Queues = new Queue<Cart>(),
-                        Seller = seller,
-                    };
+                    var cashdesk = new CashDesk(seller, i, MaxLengthQueue, ExitWhithoutSellCustomer);
+                    
                     CashDesksInModel.Add(cashdesk);
                 }
             }
@@ -112,17 +113,8 @@ namespace CRMBL.Molel
                 for (int a = 0; a < SellersQueue.Count; a++)
                 {
                     var seller = SellersQueue.Dequeue();
-                    var cashdesk = new CashDesk(seller, a)
-                    {
-                        IsModel = true,
-                        CountOurCustomerQueue = 0,
-                        ExitWhithoutSellCustomer = ExitWhithoutSellCustomer,
-                        MaxLengthQueue = MaxLengthQueue,
-                        NumberCashDesk = a,
-                        Queues = new Queue<Cart>(),
-                        Seller = seller,
-
-                    };
+                    var cashdesk = new CashDesk(seller, a, MaxLengthQueue, ExitWhithoutSellCustomer);
+                    
                     CashDesksInModel.Add(cashdesk);
                 }
             return CashDesksInModel;        }
@@ -153,32 +145,21 @@ namespace CRMBL.Molel
         private List<CashDesk> AddCartInCashDesks(List<CashDesk> CashDesksInModel, List<Cart> CartInModel)
         {
             //var cash = CashDesksInModel.Min(c => c.Queues.Count);//ТОDO
-            foreach (var cashDesk in CashDesksInModel)
+            for (int i = 0; i < CartInModel.Count;i++)
             {
-
-                for (int i = 0; i < cashDesk.MaxLengthQueue; i++)
-                {
-                    while (CartInModel.Count > 0)
-                    {
-                        var cart = CartInModel[0];
-                        cashDesk.AddQueuesCustomer(cart);
-                        CartInModel.RemoveAt(0);
-                    };
-
-                }
-                //foreach (var cart in CartInModel)
-                //{
-                //    //for (int i = 0; i < cashDesk.MaxLengthQueue; i++)
-
-                //    var numbercash = CashDesksInModel.Min(c => c.Queues.Count);
-                //    var cach = CashDesksInModel[numbercash];
-                //    cach.AddQueuesCustomer(cart);
-                //    CartInModel.RemoveAt(0);
-
-                //}
-            }
+                var cachDesk = CashDesksInModel[random.Next(CashDesksInModel.Count)];
+                cachDesk.AddQueuesCustomer(CartInModel[0]);
+                CartInModel.RemoveAt(0);
+                Thread.Sleep(CustomerSpeed);
+            }                  
+          
             return CashDesksInModel;
         }
+        //partial List<CashDesk> DellCartInCashDesks()
+        //{
+        //    var cach = CashDesksInModel[random.Next(CashDesksInModel.Count)];
+        //    cach.DellQueuesCustomer();
+        //}
 
         
     }
