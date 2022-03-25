@@ -18,7 +18,8 @@ namespace CRMBL.Molel
 
         public override string ToString()
         {
-            return NameProduct;
+            string st = $"{NameProduct} - {Price}"; 
+            return st;
         }
         public override int GetHashCode()
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CRMBL.Molel
@@ -11,7 +12,7 @@ namespace CRMBL.Molel
 
         public Customer CustomerInCart { get; set; }
 
-       
+      
         public Dictionary< Product, int> catalogProducts { get; set; }
 
         public Cart(Customer customer)
@@ -63,8 +64,30 @@ namespace CRMBL.Molel
             return result;
 
         }
+        public List<Product> GetAll()
+        {
+            var result = new List<Product>();
 
-       
+            foreach (Product product in catalogProducts.Keys)
+            {
+                var product1 = new Product()
+                {
+                    NameProduct = product.NameProduct,
+                    Count = 1,
+                    Id = product.Id,
+                    Price = product.Price,
+                    Sells = product.Sells
+                };
+                result.Add(product1);
+
+            }
+            return result;
+
+        }
+        public decimal SumPrise => GetAll().Sum(p => p.Price);
+
+
+
 
     }
 }
