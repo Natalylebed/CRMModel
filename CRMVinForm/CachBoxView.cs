@@ -29,7 +29,7 @@ namespace CRMVinForm
            CashDeskName.Name = "label" + number; 
            CashDeskName.Size = new Size(100, 20);
            CashDeskName.TabIndex = number;
-           CashDeskName.Text = $" касса номер {number}";
+           CashDeskName.Text = $" касса № {number}";
 
            CountExitWhithoutSellCustomer.AutoSize = true;
            CountExitWhithoutSellCustomer.Location = new Point(x+420, y);

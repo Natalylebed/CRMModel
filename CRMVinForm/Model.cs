@@ -13,7 +13,7 @@ namespace CRMVinForm
 {
     public partial class Model : Form
     {
-        ModelShop modelShop = new ModelShop(10,100,300,5,10);
+        ModelShop modelShop = new ModelShop(10,1000,300,10);
        
         
         public Model()
@@ -36,7 +36,7 @@ namespace CRMVinForm
                 Controls.Add(cachBoxView.CountExitWhithoutSellCustomer);
                 
             }
-            modelShop.Start(200, 2, 10, 100);
+            modelShop.Start(800, 2, 10);
 
 
         }
@@ -60,7 +60,7 @@ namespace CRMVinForm
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            modelShop.CashDeskSpeed = (int)numericUpDown1.Value;
+            modelShop.CashDeskSpeed = (int)numericUpDown2.Value;
 
         }
     }

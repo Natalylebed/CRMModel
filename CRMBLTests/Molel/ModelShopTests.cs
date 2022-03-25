@@ -25,8 +25,8 @@ namespace CRMBL.Molel.Tests
         public void ModelShopTest()
         {
 
-            var modelshop = new ModelShop(10, 1000,10,5,10);
-            modelshop.Start(3, 1, 3, 500);
+            var modelshop = new ModelShop(10, 1000,10,10);
+            modelshop.Start(3, 1, 3);
             var actual1 = modelshop.CartInModel.Count;
             var actual2 = modelshop.CashDesksInModel[0].Queues.Count;
 

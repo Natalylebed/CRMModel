@@ -17,14 +17,14 @@ namespace CRMBL.Molel
         public int ExitWhithoutSellCustomer { get; set; }
 
         public event EventHandler<Check> CheckClose;
-        public CashDesk(Seller seller, int number,int maxlenghtQueues, int exitWhithoutSellCustomer)        
+        public CashDesk(Seller seller, int number,int maxlenghtQueues)        
         {
             NumberCashDesk = number;
             Seller = seller;
             IsModel = true;
             Queues = new Queue<Cart>();
             MaxLengthQueue = maxlenghtQueues;
-            ExitWhithoutSellCustomer = exitWhithoutSellCustomer;
+          
         }
         public void AddQueuesCustomer(Cart cart)
         {
